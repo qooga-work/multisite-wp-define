@@ -3,10 +3,10 @@
 Plugin Name: Use WP_HOME and WP_SITEURL in MultiSite
 Plugin URI: https://qooga.jb-jk.net/use-wp_home-and-wp_siteurl-in-multisite/
 Description: Allows wp_options values to be overwritten in wp-config.php for MultiSite
-Author: Tam Oya
+Author: QoogaKIKAKU (T.O)
 Version: 1.0
 Author URI: https://qooga.jb-jk.net
-License: GPL2
+License: https://github.com/qooga-work/multisite-wp-define/blob/master/LICENSE
 */
 class Use_Wp_Define_In_MultiSite
 {
