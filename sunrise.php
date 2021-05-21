@@ -93,6 +93,7 @@ if ( isPluginActive($plugin_name) && LOCAL_FLAG == true ) {
     if (!defined('DOMAIN_CURRENT_SITE')) {
         define('DOMAIN_CURRENT_SITE', (isset($_SERVER['HTTP_HOST']) && strlen($_SERVER['HTTP_HOST'])>0)? $_SERVER['HTTP_HOST'] :$_SERVER['SERVER_NAME']);
     }
+
     if (!defined('SITE_ID_CURRENT_SITE')) {
         define('SITE_ID_CURRENT_SITE', 1);
     }
@@ -174,16 +175,16 @@ if ( isPluginActive($plugin_name) && LOCAL_FLAG == true ) {
 
             if( $t_val->blog_id != $current_site->blog_id ){
                 if(
-                    ($t_val->blog_id == $tmp['target_site']) ||
-                    ($t_val->path === substr($tmp['path'], 0, strlen($t_val->path)))
-                 ){
+                    ($t_val->blog_id == $tmp['target_site'] && MULTIDOMAIN_INSTALL == true) ||
+                    ($t_val->path === substr($tmp['path'], 0, strlen($t_val->path)) && MULTIDOMAIN_INSTALL == false)
+                ){
 //                    switch_to_blog($tmp['target_site']);
-                     $tmp['path'] = $t_val->path;
-                     $blog_id = $t_val->blog_id;
-                     $current_blog = $t_val;
-                     $current_blog = new WP_Site($t_val);
-                     $current_blog->domain = $tmp["set_url"]["host"];
-                 }
+                    $tmp['path'] = $t_val->path;
+                    $blog_id = $t_val->blog_id;
+                    $current_blog = $t_val;
+                    $current_blog = new WP_Site($t_val);
+                    $current_blog->domain = $tmp["set_url"]["host"];
+                }
             }
 
         }
